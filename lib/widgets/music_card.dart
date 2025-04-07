@@ -10,7 +10,10 @@ Widget musicCard({
   onTap: () {},
   child: ListTile(
     contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 2),
-    leading: Icon(Icons.music_note),
+    leading:
+        props.imgCover != null
+            ? Image.memory(props.imgCover!)
+            : Icon(Icons.music_note),
     title: Text(
       props.title,
       style: GoogleFonts.oxygen(
@@ -25,29 +28,6 @@ Widget musicCard({
         fontWeight: FontWeight.w500,
         fontSize: 14,
       ),
-    ),
-    trailing: PopupMenuButton(
-      itemBuilder:
-          (context) => [
-            PopupMenuItem(
-              child: ListTile(
-                leading: Icon(Icons.reset_tv),
-                title: Text("menu 1"),
-              ),
-            ),
-            PopupMenuItem(
-              child: ListTile(
-                leading: Icon(Icons.reset_tv),
-                title: Text("menu 1"),
-              ),
-            ),
-            PopupMenuItem(
-              child: ListTile(
-                leading: Icon(Icons.reset_tv),
-                title: Text("menu 1"),
-              ),
-            ),
-          ],
     ),
   ),
 );

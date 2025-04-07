@@ -5,9 +5,6 @@ class MusicScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text("Music")),
-      body: Center(child: Text("Music")),
-    );
+    return const Placeholder();
   }
 }

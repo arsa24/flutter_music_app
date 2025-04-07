@@ -1,12 +1,14 @@
+import 'dart:typed_data';
+
 class MusicCardModel {
   final String title;
   final String artist;
   final String uri;
-  final String path;
+  final Uint8List? imgCover;
 
   MusicCardModel({
     required this.artist,
-    required this.path,
+    this.imgCover,
     required this.title,
     required this.uri,
   });
