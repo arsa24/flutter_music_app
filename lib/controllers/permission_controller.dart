@@ -1,3 +1,4 @@
+import 'package:device_info_plus/device_info_plus.dart';
 import 'package:get/get.dart';
 import 'package:permission_handler/permission_handler.dart';
 
@@ -6,34 +7,26 @@ class PermissionController extends GetxController {
 
   @override
   void onInit() {
-    handlePermission();
     super.onInit();
+    handlePermission();
   }
 
-  handlePermission() async {
-    var status = await Permission.storage.status;
+  Future<void> handlePermission() async {
+    final androidInfo = await DeviceInfoPlugin().androidInfo;
+    final sdkInt = androidInfo.version.sdkInt;
 
-    if (status.isGranted) {
-      isGranted.value = true;
+    if (sdkInt >= 33) {
+      // Android 13 >
+      final audio = await Permission.audio.request();
+      isGranted.value = audio.isGranted;
+    } else if (sdkInt >= 30) {
+      // Android 11 - 12
+      final result = await Permission.manageExternalStorage.request();
+      isGranted.value = result.isGranted;
     } else {
-      var perm = await Permission.storage.request();
-
-      if (perm.isGranted) {
-        isGranted.value = true;
-      } else if (perm.isPermanentlyDenied) {
-        Get.defaultDialog(
-          title: "Izin diperlukan",
-          middleText: "Aktifkan izin penyimpanan secara manual di pengaturan.",
-          textConfirm: "Buka Pengaturan",
-          textCancel: "Batal",
-          onConfirm: () {
-            openAppSettings();
-            Get.back();
-          },
-        );
-      } else {
-        isGranted.value = false;
-      }
+      // Android 10 <
+      final result = await Permission.storage.request();
+      isGranted.value = result.isGranted;
     }
   }
 }

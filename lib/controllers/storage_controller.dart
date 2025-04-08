@@ -1,9 +1,23 @@
+import 'dart:typed_data';
+import 'package:on_audio_query/on_audio_query.dart';
 import 'package:get/get.dart';
 
-class StorageController extends GetxController{
-  var songs = [].obs;
+class StorageController extends GetxController {
+  RxList<SongModel> songs = <SongModel>[].obs;
+  RxList<Uint8List?> artworks = <Uint8List?>[].obs;
+  RxBool isLoad = false.obs;
 
-  getSongs() async {
-    
+  final audioQuery = OnAudioQuery();
+
+  Future<void> getSongs() async {
+    if (isLoad.value) return;
+    final get = await audioQuery.querySongs();
+
+    final getArtworks = await Future.wait(
+      get.map((e) => audioQuery.queryArtwork(e.id, ArtworkType.AUDIO)),
+    );
+    artworks.value = getArtworks;
+    songs.value = get;
+    isLoad.value = true;
   }
 }

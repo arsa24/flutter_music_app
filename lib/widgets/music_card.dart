@@ -16,14 +16,14 @@ Widget musicCard({
         child: Row(
           children: [
             Container(
-              width: 52,
-              height: 52,
+              width: 48,
+              height: 48,
               decoration: BoxDecoration(borderRadius: BorderRadius.circular(4)),
               child:
                   props.imgCover != null
                       ? ClipRRect(
                         borderRadius: BorderRadius.circular(4),
-                        child: Image.memory(props.imgCover!),
+                        child: Image.memory(props.imgCover!, fit: BoxFit.cover),
                       )
                       : Center(child: Icon(Icons.music_note)),
             ),
@@ -36,7 +36,7 @@ Widget musicCard({
                     props.title,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
-                    style: StylesConstant(context: context).textStyle(size: 16),
+                    style: StylesConstant(context: context).textStyle(size: 14, weight: FontWeight.w700),
                   ),
                   Text(
                     props.artist,

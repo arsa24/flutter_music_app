@@ -5,9 +5,6 @@ class PlaylistScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text("Music")),
-      body: Center(child: Text("Music")),
-    );
+    return Scaffold(appBar: AppBar(title: Text("Playlist")));
   }
 }
