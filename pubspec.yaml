@@ -15,6 +15,7 @@ dependencies:
   get_storage: ^2.1.1
   permission_handler: ^11.4.0
   on_audio_query: ^2.9.0
+  gap: ^3.0.1
 
 dev_dependencies:
   flutter_test:

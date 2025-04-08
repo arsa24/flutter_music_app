@@ -1,4 +1,4 @@
-import 'package:music_flutter_app/controllers/storage_controller.dart';
+import 'package:music_flutter_app/controllers/permission_controller.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:music_flutter_app/controllers/theme_controller.dart';
 import 'package:music_flutter_app/screens/root_screens.dart';
@@ -9,7 +9,7 @@ import 'package:music_flutter_app/constants/theme_constant.dart';
 void main() async {
   await GetStorage.init();
   Get.put(ThemeController());
-  Get.put(StorageController());
+  Get.put(PermissionController());
 
   runApp(RootApp());
 }

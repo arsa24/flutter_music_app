@@ -8,7 +8,7 @@ class ColorsConstant {
     ternary: Color(0xFF34D1BF),
     text: Color(0xFF000000),
     hintText: Color(0xFF757575),
-    unselectedIcon: Color(0xFFBDBDBD)
+    unselectedIcon: Color(0xFFBDBDBD),
   );
 
   static ColorsModel dark = ColorsModel(
@@ -16,7 +16,7 @@ class ColorsConstant {
     secondary: Color(0xFF101010),
     ternary: Color(0xFF34D1BF),
     text: Color(0xFFFFFFFF),
-    hintText: Color(0xFFFAFAFA),
-    unselectedIcon: Color(0xFFBDBDBD)
+    hintText: Color(0xFF757575),
+    unselectedIcon: Color(0xFFBDBDBD),
   );
 }
