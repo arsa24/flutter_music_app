@@ -1,3 +1,4 @@
+import 'package:music_flutter_app/controllers/player_controller.dart';
 import 'package:music_flutter_app/controllers/storage_controller.dart';
 import 'package:music_flutter_app/controllers/permission_controller.dart';
 import 'package:get_storage/get_storage.dart';
@@ -12,7 +13,7 @@ void main() async {
   Get.put(ThemeController());
   Get.put(PermissionController());
   Get.put(StorageController());
-
+  Get.put(PlayerController());
   runApp(RootApp());
 }
 

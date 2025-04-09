@@ -17,6 +17,9 @@ dependencies:
   on_audio_query: ^2.9.0
   gap: ^3.0.1
   device_info_plus: ^11.3.3
+  just_audio: ^0.9.46
+  flutter_sliding_up_panel: ^2.1.1
+  dio: ^5.8.0+1
 
 dev_dependencies:
   flutter_test:

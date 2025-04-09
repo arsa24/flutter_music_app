@@ -1,26 +1,27 @@
+import 'package:music_flutter_app/controllers/spotify_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:music_flutter_app/controllers/permission_controller.dart';
 
 class MusicScreen extends StatelessWidget {
-  const MusicScreen({super.key});
+  MusicScreen({super.key});
+  final spotifyController = Get.put(SpotifyController());
 
   @override
   Widget build(BuildContext context) {
-    final req = Get.find<PermissionController>();
-
     return Scaffold(
-      appBar: AppBar(title: Text("Music")),
-      body: Center(
-        child: Obx(
-          () => Text(
-            "permission: ${req.isGranted.value ? "diizinkan" : "tidak diizinkan"}",
-          ),
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: req.handlePermission,
-        child: Icon(Icons.storage_outlined),
+      appBar: AppBar(title: const Text("Music")),
+      body: FutureBuilder(
+        future: spotifyController.searchQuery(query: "selamat tinggal"),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(child: CircularProgressIndicator());
+          }
+
+          if (!snapshot.hasData || snapshot.data!.spotify.isEmpty) {
+            return const Center(child: Text("Tidak ditemukan"));
+          }
+          return Text(snapshot.data!.spotify[0].title);
+        },
       ),
     );
   }

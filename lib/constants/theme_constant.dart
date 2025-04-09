@@ -8,9 +8,7 @@ class ThemeConstant {
     brightness: Brightness.dark,
     scaffoldBackgroundColor: ColorsConstant.dark.primary,
     appBarTheme: AppBarTheme(
-      titleTextStyle: GoogleFonts.oxygen(
-        fontWeight: FontWeight.w700,
-      ),
+      titleTextStyle: GoogleFonts.oxygen(fontWeight: FontWeight.w700),
       backgroundColor: ColorsConstant.dark.primary,
       foregroundColor: ColorsConstant.dark.text,
     ),
@@ -18,7 +16,7 @@ class ThemeConstant {
       selectedItemColor: ColorsConstant.dark.ternary,
       unselectedItemColor: ColorsConstant.dark.unselectedIcon,
     ),
-    textTheme: GoogleFonts.oxygenTextTheme(),
+    textTheme: GoogleFonts.oxygenTextTheme(ThemeData.dark().textTheme),
   );
 
   // light theme
@@ -33,7 +31,7 @@ class ThemeConstant {
       selectedItemColor: ColorsConstant.light.ternary,
       unselectedItemColor: ColorsConstant.light.unselectedIcon,
     ),
-    textTheme: GoogleFonts.oxygenTextTheme(),
+    textTheme: GoogleFonts.oxygenTextTheme(ThemeData.light().textTheme),
   );
 
   // getter color
