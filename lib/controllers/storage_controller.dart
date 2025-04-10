@@ -11,13 +11,20 @@ class StorageController extends GetxController {
 
   Future<void> getSongs() async {
     if (isLoad.value) return;
-    final get = await audioQuery.querySongs();
+    final get = await audioQuery.querySongs(
+      sortType: SongSortType.DISPLAY_NAME,
+      orderType: OrderType.ASC_OR_SMALLER,
+    );
+
+    final getMusicOnly = get.where((e) => e.isMusic == true).toList();
 
     final getArtworks = await Future.wait(
-      get.map((e) => audioQuery.queryArtwork(e.id, ArtworkType.AUDIO)),
+      getMusicOnly.map((e) => audioQuery.queryArtwork(e.id, ArtworkType.AUDIO)),
     );
+
     artworks.value = getArtworks;
-    songs.value = get;
+
+    songs.value = getMusicOnly;
     isLoad.value = true;
   }
 }

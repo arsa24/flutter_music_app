@@ -67,10 +67,7 @@ Widget musicCard({
           ),
         ),
       ),
-      IconButton(
-        icon: const Icon(Icons.more_vert),
-        onPressed: () => playerController.player.pause(),
-      ),
+      IconButton(icon: const Icon(Icons.more_vert), onPressed: () {}),
     ],
   );
 }
