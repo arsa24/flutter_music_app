@@ -11,7 +11,7 @@ Widget homeTracklistView({
   double? x,
   double? y,
 }) => ListView.separated(
-  padding: EdgeInsets.symmetric(horizontal: x ?? 16, vertical: y ?? 0),
+  padding: EdgeInsets.fromLTRB(x ?? 16, y ?? 0, x ?? 16, (y ?? 0) + 80),
   separatorBuilder: (context, index) => Gap(12),
   shrinkWrap: true,
   physics: NeverScrollableScrollPhysics(),

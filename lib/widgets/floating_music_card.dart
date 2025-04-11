@@ -1,3 +1,4 @@
+import 'package:music_flutter_app/views/music_view.dart';
 import 'package:get/get.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +16,7 @@ class FloatingMusicCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () => Get.to(MusicView(props: props)),
       child: Container(
         padding: EdgeInsets.all(8),
         width: MediaQuery.of(context).size.width,
@@ -108,7 +109,7 @@ class FloatingMusicCard extends StatelessWidget {
               double progress = playerController.position.value;
               if (progress.isNaN || progress < 0.0) progress = 0.0;
               if (progress > 1.0) progress = 1.0;
-
+              
               return Container(
                 height: 2,
                 width: double.infinity,
